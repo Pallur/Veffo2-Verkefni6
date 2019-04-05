@@ -7,10 +7,29 @@ import TodoDetail from '../components/todo-detail/TodoDetail';
 import { getTodo } from '../api';
 
 function Home(props) {
+  const { id, todo } = props;
+  console.log('eyo', id, todo);
+
+  if (!todo) {
+    return <Error statusCode = { 404 } />
+  }
 
   return (
-    null
+    <Layout title = { todo.title }>
+      <TodoDetail id = { id } todo = { todo } />
+    </Layout>
   );
+}
+
+Home.getInitialProps = async ({ query }) => {
+  const { id } = query;
+
+  const todo = await getTodo(id);
+
+  return {
+    id,
+    todo,
+  };
 }
 
 export default Home
