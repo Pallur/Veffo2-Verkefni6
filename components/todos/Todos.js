@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import css from './Todos.css';
 import TodoItem from '../todo-item/TodoItem';
 import Button from '../button/Button';
-// import { realpathSync } from 'fs';
 
 // Listi af verkefnum á forsíðu
 export default function Todos(props) {
